@@ -1,0 +1,144 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+
+  <title>YOHJI YAMAMOTO SPRING SUMMER 2025 PARIS COLLECTION</title>
+  <meta name="keywords" content="YOHJI YAMAMOTO,yohji yamamoto,ヨウジヤマモト,山本耀司">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="YOHJI YAMAMOTO SPRING SUMMER 2025 PARIS COLLECTION">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="../../wp/wp-content/themes/yohjiyamamoto/images/ogp.jpg">
+  <meta property="og:site_name" content="Yohji Yamamoto Official Site">
+
+  <link href="../../wp/wp-content/themes/yohjiyamamoto/images/favicon.ico" rel="shortcut icon">
+  <link href="../../wp/wp-content/themes/yohjiyamamoto/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <link href="../../wp/wp-content/themes/yohjiyamamoto/css/style.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../../wp/wp-content/themes/yohjiyamamoto/js/jquery.easing.js"></script>
+
+
+</head><body class="live-frame-22sshomme">
+
+  <section id="liveview">
+    <div class="countdown-timer">
+      <figure>
+        <img src="../../wp/wp-content/themes/yohjiyamamoto/images/common/logo_yy_femme_wh.png" alt="YOHJI YAMAMOTO">
+      </figure>
+      <p class="countdown-timer__title">
+        SPRING SUMMER 2025
+      </p>
+      <p class="countdown-timer__title-sp">
+        <img src="images/text_title-2.png" alt="SPRING SUMMER 2025 COLLECTION">
+      </p>
+      <div class="countdown-timer__date" id="result">
+      </div>
+      <p class="countdown-timer__locale">
+        September 27th 7pm CEST/Paris Time
+      </p>
+      <p class="countdown-timer__locale-sp">
+        <img src="images/text_locale.png" alt="September 27th 7pm CEST/Paris Local Time">
+      </p>
+    </div>
+    <iframe src="" id="livePlayer" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
+    <script>
+      $(window).load(function () {
+
+        var windowWidth;
+        windowWidth = $(window).width();
+        var youtube_id = 'aKqLBMwblqI';
+
+        // COUNTDOWN TIMER
+
+        var end_date = (new Date(2024, 8, 27, 17, 0, 0)).getTime();
+        var current_date = (new Date()).getTime() + (new Date()).getTimezoneOffset() * 60 * 1000;
+
+        if (end_date > current_date) {
+          countdownTimer();
+        } else {
+          $('.countdown-timer').remove();
+          liveView();
+        }
+
+        var timer_interval = 1000;
+
+        function countdownTimer() {
+
+          $('.countdown-timer').fadeIn();
+
+          var now_date = (new Date()).getTime() + (new Date()).getTimezoneOffset() * 60 * 1000;
+
+          var period = (end_date - now_date) / 1000;
+
+          if (period > 0) { //表示
+
+            var day = 0;
+            day = Math.floor(period / (60 * 60 * 24));
+
+            var hour = Math.floor(period / (60 * 60));
+            hour = hour - day * 24;
+
+            var minute = Math.floor(period / 60);
+            minute = minute - ((day * 24 * 60) + (hour * 60));
+
+            var second = Math.floor(period);
+            second = second - ((day * 24 * 60 * 60) + (hour * 60 * 60) + (minute * 60));
+
+            var insert = "";
+            if (day > 0) {
+              insert += '<div class="day"><span class="small">START IN</span><span class="normal">' + day + '</span><span class="small">DAYS</span></div>';
+              insert += '<span>' + addZero(hour) + ':' + '</span>';
+            } else {
+              insert += '<span>' + addZero(hour) + ':' + '</span>';
+            }
+            insert += '<span>' + addZero(minute) + ':' + '</span>';
+            insert += '<span>' + addZero(second) + '' + '</span>';
+            document.getElementById('result').innerHTML = insert;
+            if (period > 0) {
+              setTimeout(countdownTimer, 10);
+            } else {
+              $('.countdown-timer').fadeOut(4000);
+              setTimeout(function () {
+                $('#liveview').fadeIn(4000);
+              }, 8000);
+              liveView();
+            }
+
+          } else {
+            var insert = "";
+            insert += '<span>00:</span><span>00:</span><span>00</span>';
+            document.getElementById('result').innerHTML = insert;
+            $('.countdown-timer').fadeOut(3000);
+            setTimeout(function () {
+              liveView();
+            }, 3000);
+          }
+
+          // 時　: 分 : 秒　2桁でそろえる
+          function addZero(num) {
+            return ('0' + num).slice(-2);
+          }
+
+        }
+
+        function liveView() {
+          $("#livePlayer").attr("src", "https://www.youtube.com/embed/" + youtube_id + "?autoplay=1");
+          $('#livePlayer').fadeIn(4000);
+          $('#liveview').addClass('is-view');
+        }
+
+      });
+    </script>
+
+  </section>
+
+
+</body></html>
